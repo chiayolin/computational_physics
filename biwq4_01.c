@@ -20,14 +20,14 @@
 #define DEBUG 1
 #define SIGN(n) ((grav_force_0 < n) ? '+' : '-')
 
-#define G 6.673E-11
+#define G 6.673E-11 // gravitational constant;
 
 struct ball {
 	double radius; // in m;
 	double mass; // in kg;
 };
 
-double sq(double);
+double sq(double); // square a number;
 
 int main(void) {
 	/* init */
@@ -52,7 +52,7 @@ int main(void) {
 		(grav_force_0 / grav_force_1) : (grav_force_1 / grav_force_0);
 
 	/* 3. */
-	const double grav_force_2 = G * ((ball_a.mass * 2) / sq(ball_a.radius));
+	const double grav_force_2 = G * ((ball_a.mass * 4) / sq(ball_a.radius));
 	answer_3 = (grav_force_0 > grav_force_2) ? 
 		(grav_force_0 / grav_force_2) : (grav_force_2 / grav_force_0);
 
@@ -62,14 +62,13 @@ int main(void) {
 		SIGN(grav_force_1), answer_2, 
 		SIGN(grav_force_2), answer_3);
 	
+	/* debuging */
 	#ifdef DEBUG
 	#if (DEBUG != 0)
 	printf("; grav_force_0: %10E\n; grav_force_1: %10E\n; grav_force_2: %10E\n", 
 		grav_force_0, grav_force_1, grav_force_2);
 	#endif
 	#endif
-
-
 }
 
 double sq(double n) { 
